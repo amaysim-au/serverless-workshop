@@ -39,5 +39,57 @@ module.exports = {
       logger.error(err);
       return callback(err);
     }
+  },
+
+  async create(event, context, callback) {
+    let logger = requestLogger(context);
+    let repository = new TaskRepository();
+
+    try {
+      let body = JSON.parse(event.body);
+      logger.info({ body });
+
+      let task = await repository.create(body);
+      logger.info({ response: task });
+
+      return callback(null, jsonResponse(201, task));
+    } catch(err) {
+      logger.error(err);
+      return callback(err);
+    }
+  },
+
+  async update(event, context, callback) {
+    let logger = requestLogger(context);
+    let repository = new TaskRepository();
+
+    try {
+      let id = event.pathParameters.id;
+      let body = JSON.parse(event.body);
+      logger.info({ id, body });
+
+      let task = await repository.update(id, body);
+      logger.info({ response: task });
+
+      return callback(null, jsonResponse(200, task));
+    } catch(err) {
+      logger.error(err);
+      return callback(err);
+    }
+  },
+
+  async remove(event, context, callback) {
+    let logger = requestLogger(context);
+    let repository = new TaskRepository();
+    let id = event.pathParameters.id;
+    logger.info({ id });
+
+    try {
+      await repository.remove(id);
+      return callback(null, jsonResponse(204, null));
+    } catch(err) {
+      logger.error(err);
+      return callback(err);
+    }
   }
 };

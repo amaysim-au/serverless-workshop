@@ -26,6 +26,24 @@ functions:
       - http:
           path: tasks
           method: get
+  create:
+    handler: dist/handler.create
+    events:
+      - http:
+          path: tasks
+          method: post
+  update:
+    handler: dist/handler.update
+    events:
+      - http:
+          path: tasks/{id}
+          method: put
+  remove:
+    handler: dist/handler.remove
+    events:
+      - http:
+          path: tasks/{id}
+          method: delete
 
 resources:
   Resources:
