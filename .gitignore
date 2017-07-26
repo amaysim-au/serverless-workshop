@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# output from babel
+dist/
+
+# Serverless stuff
+.serverless/

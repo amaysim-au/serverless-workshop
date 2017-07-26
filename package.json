@@ -1,0 +1,36 @@
+{
+  "name": "amaysim-serverless-workshop",
+  "version": "1.0.0",
+  "description": "Introduction to serverless architectures and framework.",
+  "main": "handler.js",
+  "author": "amaysim",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaysim-au/serverless-workshop.git"
+  },
+  "keywords": [
+    "serverless"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amaysim-au/serverless-workshop/issues"
+  },
+  "homepage": "https://github.com/amaysim-au/serverless-workshop",
+  "scripts": {
+      "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register test/unit",
+      "deploy": "./node_modules/babel-cli/bin/babel.js src --out-dir dist && sls deploy -v"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.94.0",
+    "bunyan": "^1.8.12",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "mocha": "^3.4.2",
+    "sinon": "^3.0.0"
+  }
+}

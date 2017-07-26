@@ -1,0 +1,44 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+
+service: serverless-workshop
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: ap-southeast-2
+  stage: ${env:ENV}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.stage}-Task'
+  environment:
+    ENV: ${self:provider.stage}
+
+functions:
+  list:
+    handler: dist/handler.index
+    events:
+      - http:
+          path: tasks
+          method: get
+
+resources:
+  Resources:
+    DynamoDbTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.stage}-Task
+        AttributeDefinitions:
+          - AttributeName: ID
+            AttributeType: S
+        KeySchema:
+          - AttributeName: ID
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
