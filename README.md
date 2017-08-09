@@ -34,6 +34,8 @@ $ make deploy
 #     GET - https://xyz.execute-api.ap-southeast-2.amazonaws.com/yourname/tasks
 $ curl https://xyz.execute-api.ap-southeast-2.amazonaws.com/yourname/tasks
 # []
+# Remove the stack
+$ make remove
 ```
 > **Question**: why don't we use `npm`?
 
@@ -80,6 +82,10 @@ What to do? `.env.template` to the rescue! This file will be included in git and
 
 ```
 ENV
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_SESSION_TOKEN
+AWS_REGION
 ```
 
 #### ACs
