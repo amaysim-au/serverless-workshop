@@ -5,7 +5,7 @@
 - [AWS account](https://aws.amazon.com/resources/create-account/) with admin access.
 - Install [nodejs](https://nodejs.org/en/download/package-manager/) (or install via [nvm](https://github.com/creationix/nvm#installation))
 - [Install yarn](https://yarnpkg.com/lang/en/docs/install/). For Mac: `$ brew install yarn`
-- Install [Serverless Framework](https://serverless.com) `$ yarn install -g serverless`
+- Install [Serverless Framework](https://serverless.com) `$ yarn global add serverless`
 - Clone this repository `$ git clone git@github.com:amaysim-au/serverless-workshop.git`
 - Checkout this branch `$ git checkout serverless/initial`
 
