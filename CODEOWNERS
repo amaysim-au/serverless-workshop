@@ -1,0 +1,8 @@
+# These owners will be the default owners for everything in the repo.
+*       @flemay
+* 			@j03w
+
+# Order is important. The last matching pattern has the most precedence.
+# So if a pull request only touches javascript files, only these owners
+# will be requested to review.
+*.js    @octocat @github/js
