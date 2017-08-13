@@ -8,16 +8,18 @@ So far, you have built a Todo application from your local environment. This is n
 - [Docker](https://docs.docker.com/engine/installation/) (_Docker on Mac/Windows is recommended if you do not use Unix_)
 - [Docker Compose](https://docs.docker.com/compose/install/) (_which comes bundled with Docker on Mac/Windows_)
 - Make (_which is native to Mac/Unix_)
+- [assume-role](https://github.com/remind101/assume-role)
 
 ## Explore
 
 - What is Docker?
 - What is Docker Compose?
 - What is Make?
-- Why the 3 musketeers?
+- Why the [3 musketeers](https://confluence.amaysim.net/display/ENG/Immutable+SDLC+-+The+Three+Musketeers)?
 - .env, .env.template, .env.local
 - `$ make testUnit` vs `$ make _testUnit`
 - `$ make shell`
+- Why don't we use `yarn`?
 
 ## Initial Version
 
@@ -26,10 +28,12 @@ The initial version of this workshop contains already workable code for you to b
 ### Test, Deploy, and Run
 
 ```bash
-# You would need to configure 1 environment variable: ENV. For now the value would be your name.
+# Use assume-role tool to access AWS
+$ eval $(assume-role playground)
 # Create a .env file using .env.local
 $ make dotenv DOTENV=.env.local
-# Update the value of ENV inside .env
+# Update the value of ENV inside .env with your firstnamelastname
+
 # Test
 $ make testUnit
 # Deploy
@@ -42,7 +46,6 @@ $ curl https://xyz.execute-api.ap-southeast-2.amazonaws.com/firstnamelastname/ta
 # Remove the stack
 $ make remove
 ```
-> **Question**: why don't we use `npm`?
 
 ## Tasks
 
@@ -53,6 +56,10 @@ This section contains the tasks to complete for this workshop.
 ### Packaging
 
 So far you have been deploying to one environment only. By default, Serverless Framework creates a package out of the current directory before deployment. What if you want to deploy to more than 1 environment? It would still work but following [The Twelve-Factor App](https://12factor.net/build-release-run) this method is not recommended.
+
+Also go to AWS console and download the package of 1 of the lambdas and look what is inside. There are a lot of files that are not useful for the lambda. Even the `.env` file is there. This file could include sensitive data you may not want to upload to AWS.
+
+> Serverless includes options to packaging. This workshop focuses on artifact because it is very useful to know when using other languages like Golang. Also creating a `package.zip` offers you more control.
 
 #### ACs
 
@@ -68,33 +75,3 @@ The `package.zip` is now created and it is a big achievement. However, is the co
 #### ACs
 
 - node modules in `package.zip` should not contain any dev dependency
-
-### Environment Variables
-
-You have been dealing with 1 environment variable so far. It will likely not happen in reality. Luckily, Docker and Docker Compose offers another way to handle multiple environment variables: a file.
-
-#### ACs
-
-- use a file `.env` to pass environment variables
-- make sure the file is ignored by git
-- configure Docker Compose to use the file `.env`
-
-### .env.template
-
-Since the file `.env` is not committed, the execution of testing, building, and deploying on the CI/CD server will likely fail. Don't believe me? Delete your `.env` file and run `$ make test`.
-
-What to do? `.env.template` to the rescue! This file will be included in git and will look like this:
-
-```
-ENV
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
-AWS_SESSION_TOKEN
-AWS_REGION
-```
-
-#### ACs
-
-- create a `.env.template` file
-- make sure the file is not ignored
-- create a `.env` file based of `.env.template` only if `.env` is not present (_this file should not be overwritten_)

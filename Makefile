@@ -14,6 +14,9 @@ testUnit: $(DOTENV_TARGET)
 deploy: $(DOTENV_TARGET)
 	docker-compose run --rm serverless make _deps _build _deploy
 
+testSys: $(DOTENV_TARGET)
+	docker-compose run --rm serverless make _deps _testSys
+
 remove: $(DOTENV_TARGET)
 	docker-compose run --rm serverless make _remove
 
@@ -35,6 +38,9 @@ dotenv:
 
 _testUnit:
 	./node_modules/mocha/bin/mocha --compilers js:babel-register test/unit
+
+_testSys:
+	./node_modules/mocha/bin/mocha --compilers js:babel-register test/system
 
 _build:
 	./node_modules/babel-cli/bin/babel.js src --out-dir dist
