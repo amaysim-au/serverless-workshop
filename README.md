@@ -9,13 +9,15 @@ So far, you have built a Todo application from your local environment. This is n
 - [Docker Compose](https://docs.docker.com/compose/install/) (_which comes bundled with Docker on Mac/Windows_)
 - Make (_which is native to Mac/Unix_)
 
-## FAQ
+## Explore
 
 - What is Docker?
 - What is Docker Compose?
 - What is Make?
 - Why the 3 musketeers?
 - .env, .env.template, .env.local
+- `$ make testUnit` vs `$ make _testUnit`
+- `$ make shell`
 
 ## Initial Version
 
@@ -34,8 +36,8 @@ $ make testUnit
 $ make deploy
 # you should see something like:
 #   endpoints:
-#     GET - https://xyz.execute-api.ap-southeast-2.amazonaws.com/yourname/tasks
-$ curl https://xyz.execute-api.ap-southeast-2.amazonaws.com/yourname/tasks
+#     GET - https://xyz.execute-api.ap-southeast-2.amazonaws.com/firstnamelastname/tasks
+$ curl https://xyz.execute-api.ap-southeast-2.amazonaws.com/firstnamelastname/tasks
 # []
 # Remove the stack
 $ make remove

@@ -16,11 +16,6 @@
     "url": "https://github.com/amaysim-au/serverless-workshop/issues"
   },
   "homepage": "https://github.com/amaysim-au/serverless-workshop",
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register test/unit",
-    "system_test": "./node_modules/mocha/bin/mocha --compilers js:babel-register test/system",
-    "deploy": "./node_modules/babel-cli/bin/babel.js src --out-dir dist && sls deploy -v"
-  },
   "dependencies": {
     "aws-sdk": "^2.94.0",
     "bunyan": "^1.8.12",
