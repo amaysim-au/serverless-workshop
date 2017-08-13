@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/amaysim-au/serverless-workshop",
   "scripts": {
-      "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register test/unit",
-      "deploy": "./node_modules/babel-cli/bin/babel.js src --out-dir dist && sls deploy -v"
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register test/unit",
+    "system_test": "./node_modules/mocha/bin/mocha --compilers js:babel-register test/system",
+    "deploy": "./node_modules/babel-cli/bin/babel.js src --out-dir dist && sls deploy -v"
   },
   "dependencies": {
     "aws-sdk": "^2.94.0",
@@ -31,6 +32,8 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-register": "^6.24.1",
     "mocha": "^3.4.2",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
     "sinon": "^3.0.0"
   }
 }
