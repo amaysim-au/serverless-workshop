@@ -15,6 +15,7 @@ So far, you have built a Todo application from your local environment. This is n
 - What is Docker Compose?
 - What is Make?
 - Why the 3 musketeers?
+- .env, .env.template, .env.local
 
 ## Initial Version
 
@@ -24,9 +25,11 @@ The initial version of this workshop contains already workable code for you to b
 
 ```bash
 # You would need to configure 1 environment variable: ENV. For now the value would be your name.
-$ export ENV=myname
+# Create a .env file using .env.local
+$ make dotenv DOTENV=.env.local
+# Update the value of ENV inside .env
 # Test
-$ make test
+$ make testUnit
 # Deploy
 $ make deploy
 # you should see something like:
