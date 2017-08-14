@@ -59,12 +59,14 @@ So far you have been deploying to one environment only. By default, Serverless F
 
 Also go to AWS console and download the package of 1 of the lambdas and look what is inside. There are a lot of files that are not useful for the lambda. Even the `.env` file is there. This file could include sensitive data you may not want to upload to AWS.
 
-> Serverless includes options to packaging. This workshop focuses on artifact because it is very useful to know when using other languages like Golang. Also creating a `package.zip` offers you more control.
+> Serverless includes options to packaging. This workshop focuses on artifact because it is very useful to know when using other languages like Golang. Also creating a `package.zip` offers you more control. for more information read [Serverless AWS - Packaging](https://serverless.com/framework/docs/providers/aws/guide/packaging/)
 
 #### ACs
 
-- create a target `build` which creates a `package.zip`
+- target `build` should create a `package.zip`
 - `package.zip` should only contain the necessary code (so we always keep the package as small as possible)
+- create a target `build` so it can be called at a different stage
+- target `deploy` should not `build` anymore
 - target `deploy` should only deploy if the `package.zip` is present
 - configure Serverless Framework to use `package.zip`
 
