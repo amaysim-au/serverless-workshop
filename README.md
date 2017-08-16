@@ -18,8 +18,8 @@ So far, you have built a Todo application from your local environment. This is n
 - What is Docker Compose?
 - What is Make?
 - Why the [3 musketeers](https://confluence.amaysim.net/display/ENG/Immutable+SDLC+-+The+Three+Musketeers)?
-- Why don't we use `yarn`?
-- `$ make testUnit` vs `$ make _testUnit`
+- Why don't we use `yarn` instead of `make`?
+- `$ make target` vs `$ make _target`
 
 ### .env and friends
 
