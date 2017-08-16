@@ -29,7 +29,7 @@ So far, you have built a Todo application from your local environment. This is n
 Best way to learn the .env is to play with it!
 
 ```bash
-# just to be sure, let's remove .env
+# Let's remove .env
 $ rm -f .env
 # Let's go inside a container. After all, commands are all being executed inside a container!
 $ make shell
@@ -57,6 +57,7 @@ $ make .env
 # Let's do it again
 $ make .env
 # Any difference? What would happened if you modify values in the .env and rerun the command?
+# Any difference in the Makefile for targets dotenv and .env?
 ```
 
 ## Initial Version
