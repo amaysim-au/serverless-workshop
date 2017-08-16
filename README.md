@@ -12,14 +12,52 @@ So far, you have built a Todo application from your local environment. This is n
 
 ## Explore
 
+### 3 musketeers
+
 - What is Docker?
 - What is Docker Compose?
 - What is Make?
 - Why the [3 musketeers](https://confluence.amaysim.net/display/ENG/Immutable+SDLC+-+The+Three+Musketeers)?
-- .env, .env.template, .env.local
-- `$ make testUnit` vs `$ make _testUnit`
-- `$ make shell`
 - Why don't we use `yarn`?
+- `$ make testUnit` vs `$ make _testUnit`
+
+### .env and friends
+
+- .env, .env.template, .env.local
+- difference between `NAME=value` and `NAME` in `.env*` files.
+
+Best way to learn the .env is to play with it!
+
+```bash
+# just to be sure, let's remove .env
+$ rm -f .env
+# Let's go inside a container. After all, commands are all being executed inside a container!
+$ make shell
+# What happened to the .env file?
+$ env | grep ENV
+# What is the value of ENV?
+$ exit
+$ EXPORT ENV=firstnamelastname
+$ make shell
+$ env | grep ENV
+# Is the value firstnamelastname?
+$ exit
+$ make shell DOTENV=.env.local
+# What happened to .env file?
+$ env | grep ENV
+# What's the value of ENV? what did happen to firstnamelastname?
+$ exit
+# You can use the following command to create a .env based on yourfile
+$ make dotenv DOTENV=yourfile
+# Let's remove .env
+$ rm -f .env
+# Let's create .env from .env.template
+$ make .env
+# See the steps in the result?
+# Let's do it again
+$ make .env
+# Any difference? What would happened if you modify values in the .env and rerun the command?
+```
 
 ## Initial Version
 
