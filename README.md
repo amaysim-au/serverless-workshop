@@ -1,4 +1,4 @@
-# Docker and Pipeline Workshop
+# Immutable Software Development Life Cycle
 
 So far, you have built a Todo application from your local environment. This is nice when you are toying by yourself but it does not play well with a team. Typically we would have a defined pipeline on a CI/CD server to do the work for us. Given our CI/CD server only runs Make, Docker and Docker Compose, this workshop is about developing a pipeline that only uses those technologies to test, build and deploy the Todo application.
 
@@ -12,8 +12,9 @@ So far, you have built a Todo application from your local environment. This is n
 
 ## Explore
 
-### 3 musketeers
+### Immutable SDLC
 
+- What is Immutable Software Development Life Cycle?
 - What is Docker?
 - What is Docker Compose?
 - What is Make?
