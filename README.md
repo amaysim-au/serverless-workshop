@@ -13,12 +13,12 @@ The back-end of the Todo app. It uses AWS, Serverless, Lambda, and NodeJS. The 2
 - serverless/initial
 - serverless/final
 
-### Docker and Pipeline
+### Immutable Software Development Life Cycle
 
 From local development to CI/CD pipelines using Docker, Docker Compose, Make. The 2 branches are:
 
-- docker_pipeline/initial
-- docker_pipeline/final
+- immutable_sdlc/initial
+- immutable_sdlc/final
 
 ### JAM Stack
 
