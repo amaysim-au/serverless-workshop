@@ -23,7 +23,7 @@ So far, you have built a Todo application from your local environment. This is n
 
 ### .env and friends
 
-- .env, .env.template, .env.local
+- .env, .env.template, .env.example
 - difference between `NAME=value` and `NAME` in `.env*` files.
 
 Best way to learn the .env is to play with it!
@@ -42,22 +42,26 @@ $ make shell
 $ env | grep ENV
 # Is the value firstnamelastname?
 $ exit
-$ make shell DOTENV=.env.local
+$ make shell DOTENV=.env.example
 # What happened to .env file?
 $ env | grep ENV
 # What's the value of ENV? what did happen to firstnamelastname?
 $ exit
-# You can use the following command to create a .env based on yourfile
-$ make dotenv DOTENV=yourfile
 # Let's remove .env
 $ rm -f .env
 # Let's create .env from .env.template
 $ make .env
-# See the steps in the result?
+# Pay attention to the result
 # Let's do it again
 $ make .env
 # Any difference? What would happened if you modify values in the .env and rerun the command?
 # Any difference in the Makefile for targets dotenv and .env?
+
+# In practice, you could create a file .env.qa with the config of your QA environment and use that file to manually delete or deploy your app
+# if you want to create .env using your .env.qa
+$ make dotenv DOTENV=.env.qa
+# You could even specify the file to the main targets (without creating a .env)
+$ make remove DOTENV=.env.qa
 ```
 
 ## Initial Version
@@ -69,8 +73,8 @@ The initial version of this workshop contains already workable code for you to b
 ```bash
 # Use assume-role tool to access AWS
 $ eval $(assume-role playground)
-# Create a .env file using .env.local
-$ make dotenv DOTENV=.env.local
+# Create a .env file using .env.example
+$ make dotenv DOTENV=.env.example
 # Update the value of ENV inside .env with your firstnamelastname
 
 # Test
