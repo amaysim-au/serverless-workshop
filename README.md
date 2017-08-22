@@ -8,7 +8,6 @@ So far, you have built a Todo application from your local environment. This is n
 - [Docker](https://docs.docker.com/engine/installation/) (_Docker on Mac/Windows is recommended if you do not use Unix_)
 - [Docker Compose](https://docs.docker.com/compose/install/) (_which comes bundled with Docker on Mac/Windows_)
 - Make (_which is native to Mac/Unix_)
-- [assume-role](https://github.com/remind101/assume-role)
 
 ## Explore
 
@@ -71,9 +70,11 @@ The initial version of this workshop contains already workable code for you to b
 
 ### Test, Deploy, and Run
 
+> Make sure your AWS environment is configured properly!
+
 ```bash
-# Use assume-role tool to access AWS
-$ eval $(assume-role playground)
+# Clean
+$ make _clean
 # Create a .env file using .env.example
 $ make dotenv DOTENV=.env.example
 # Update the value of ENV inside .env with your firstnamelastname
@@ -89,6 +90,9 @@ $ curl https://xyz.execute-api.ap-southeast-2.amazonaws.com/firstnamelastname/ta
 # []
 # Remove the stack
 $ make remove
+
+# you can even run all the commands in 1
+$ make testUnit deploy
 ```
 
 ## Tasks
@@ -107,10 +111,10 @@ Also go to AWS console and download the package of 1 of the lambdas and look wha
 
 #### ACs
 
-- target `build` should create a `package.zip`
+- target `_build` should create a `package.zip`
 - `package.zip` should only contain the necessary code (so we always keep the package as small as possible)
-- create a target `build` so it can be called at a different stage
-- target `deploy` should not `build` anymore
+- create a target `build` so it can be called at a different stage of the pipeline
+- target `deploy` should not `_build` anymore
 - target `deploy` should only deploy if the `package.zip` is present
 - configure Serverless Framework to use `package.zip`
 
