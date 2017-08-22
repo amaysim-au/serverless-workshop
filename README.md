@@ -42,4 +42,9 @@ The way AWS Credentials is configured will depend on your setup.
 
 If `assume role` is required, you would be using the tool `assume-role` and it will set the AWS environment variables.
 
+```bash
+# Example of how to use the command where playground profile is defined in ~/.aws/config file
+$ eval $(assume-role playground)
+```
+
 If `assume role` is not required to access your AWS account, make sure either your environment variables are set properly or you are using the `~/.aws` files.
