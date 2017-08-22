@@ -1,6 +1,6 @@
 .serverless
 node_modules
-dist
+package
 .env*
 !.env.template
 !.env.example

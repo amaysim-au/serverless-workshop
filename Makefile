@@ -1,3 +1,6 @@
+PACKAGE_DIR=package/package
+ARTIFACT_NAME=package.zip
+ARTIFACT_PATH=package/$(ARTIFACT_NAME)
 ifdef DOTENV
 	DOTENV_TARGET=dotenv
 else
@@ -11,8 +14,11 @@ endif
 testUnit: $(DOTENV_TARGET)
 	docker-compose run --rm serverless make _deps _testUnit
 
-deploy: $(DOTENV_TARGET)
-	docker-compose run --rm serverless make _deps _build _deploy
+build: $(DOTENV_TARGET)
+	docker-compose run --rm serverless make _deps _build
+
+deploy: $(ARTIFACT_PATH) $(DOTENV_TARGET)
+	docker-compose run --rm serverless make _deploy
 
 testSys: $(DOTENV_TARGET)
 	docker-compose run --rm serverless make _deps _testSys
@@ -43,7 +49,13 @@ _testSys:
 	./node_modules/mocha/bin/mocha --compilers js:babel-register test/system
 
 _build:
-	./node_modules/babel-cli/bin/babel.js src --out-dir dist
+	rm -fr package
+	mkdir -p $(PACKAGE_DIR)/
+	cp package.json $(PACKAGE_DIR)/
+	cp yarn.lock $(PACKAGE_DIR)/
+	./node_modules/babel-cli/bin/babel.js src --out-dir $(PACKAGE_DIR)/dist
+	cd $(PACKAGE_DIR) && yarn install --production
+	cd $(PACKAGE_DIR) && zip -rq ../package .
 
 _deploy:
 	rm -fr .serverless
@@ -57,4 +69,4 @@ _deps:
 	yarn install
 
 _clean:
-	rm -fr node_modules dist .env
+	rm -fr .serverless node_modules package .env

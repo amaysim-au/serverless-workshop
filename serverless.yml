@@ -1,5 +1,6 @@
 service: serverless-workshop
-
+package:
+  artifact: package/package.zip
 provider:
   name: aws
   runtime: nodejs6.10
