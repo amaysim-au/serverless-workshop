@@ -55,3 +55,6 @@ _remove:
 
 _deps:
 	yarn install
+
+_clean:
+	rm -fr node_modules dist .env

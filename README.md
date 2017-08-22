@@ -30,15 +30,15 @@ So far, you have built a Todo application from your local environment. This is n
 Best way to learn the .env is to play with it!
 
 ```bash
-# Let's remove .env
-$ rm -f .env
+# Clean the work directory
+$ make _clean
 # Let's go inside a container. After all, commands are all being executed inside a container!
 $ make shell
 # What happened to the .env file?
 $ env | grep ENV
 # What is the value of ENV?
 $ exit
-$ EXPORT ENV=firstnamelastname
+$ export ENV=firstnamelastname
 $ make shell
 $ env | grep ENV
 # Is the value firstnamelastname?
@@ -46,10 +46,10 @@ $ exit
 $ make shell DOTENV=.env.example
 # What happened to .env file?
 $ env | grep ENV
-# What's the value of ENV? what did happen to firstnamelastname?
+# What's the value of ENV? Why isn't firstnamelastname?
 $ exit
-# Let's remove .env
-$ rm -f .env
+# Clean the work directory
+$ make _clean
 # Let's create .env from .env.template
 $ make .env
 # Pay attention to the result
