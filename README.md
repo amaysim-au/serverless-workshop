@@ -125,3 +125,34 @@ The `package.zip` is now created and it is a big achievement. However, is the co
 #### ACs
 
 - node modules in `package.zip` should not contain any dev dependency
+
+## Final Version
+
+### Test, Build, Deploy, and Run
+
+> Make sure your AWS environment is configured properly!
+
+```bash
+# Clean
+$ make _clean
+# Create a .env file using .env.example
+$ make dotenv DOTENV=.env.example
+# Update the value of ENV inside .env with your firstnamelastname
+
+# Test
+$ make testUnit
+# Build package.zip
+$ make build
+# Deploy
+$ make deploy
+# you should see something like:
+#   endpoints:
+#     GET - https://xyz.execute-api.ap-southeast-2.amazonaws.com/firstnamelastname/tasks
+$ curl https://xyz.execute-api.ap-southeast-2.amazonaws.com/firstnamelastname/tasks
+# []
+# Remove the stack
+$ make remove
+
+# you can even run all the commands in 1
+$ make testUnit build deploy
+```
