@@ -32,6 +32,14 @@ Front-end of the Todo app using the JAM Stack (ReactJS, S3). The 2 branches are:
 Each part of the workshop relies on the following prerequisites:
 
 - AWS account with admin access (including development keys)
-- [assume-role](https://github.com/remind101/assume-role)
+- [assume-role](https://github.com/remind101/assume-role) if assume role is required
 
 > Each branch will also have their own prerequisites describe in their README.
+
+### AWS Credentials Configuration
+
+The way AWS Credentials is configured will depend on your setup.
+
+If `assume role` is required, you would be using the tool `assume-role` and it will set the AWS environment variables.
+
+If `assume role` is not required to access your AWS account, make sure either your environment variables are set properly or you are using the `~/.aws` files.
