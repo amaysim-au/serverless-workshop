@@ -54,7 +54,7 @@ _remove:
 	rm -fr .serverless
 
 _deps:
-	yarn install
+	yarn install --no-bin-links
 
 _clean:
 	rm -fr node_modules dist .env
